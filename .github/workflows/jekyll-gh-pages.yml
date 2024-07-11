@@ -35,6 +35,8 @@ jobs:
         with:
           source: ./
           destination: ./_site
+      - name: list-file
+        run: ls
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
