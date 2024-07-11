@@ -28,6 +28,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Create
+        uses: oven-sh/setup-bun@v2
+        run: bun install && bun build
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Build with Jekyll
@@ -35,12 +40,10 @@ jobs:
         with:
           source: ./
           destination: ./_site
-      - name: list-file
-        run: cd ./_site && ls && cd ..
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./_site/docs
+          path: ./_site/docs/browser
 
   # Deployment job
   deploy:
