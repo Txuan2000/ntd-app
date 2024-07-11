@@ -28,7 +28,7 @@ jobs:
         run: bun install
 
       - name: Build Angular Project
-        run: bun run build && ls
+        run: bun build:prod && ls
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
