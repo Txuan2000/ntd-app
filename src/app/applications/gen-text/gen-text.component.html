@@ -1,0 +1,59 @@
+<div class="card">
+  <!-- <h1 class="text-center">{{ title | translate }}</h1> -->
+  <div class="col-12">
+    <div class="field grid">
+      <label class="col-12 md:col-2" for="gen-text">Nhập ký tự</label>
+      <div class="col-12 md:col-10">
+        <input
+          #srcText
+          pInputText
+          type="text"
+          id="gen-text"
+          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+          value="a"
+        />
+      </div>
+    </div>
+    <div class="field grid">
+      <label class="col-12 md:col-2" for="count-text">Nhập số lượng</label>
+      <div class="col-12 md:col-10">
+        <input
+          #resLength
+          pInputText
+          type="number"
+          id="gen-text"
+          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+          value="0"
+          min="0"
+        />
+      </div>
+    </div>
+    <!-- <p-divider></p-divider> -->
+    <div class="field grid">
+      <label class="col-12 md:col-2" for="res-text">Kết quả</label>
+      <div class="col-12 md:col-10">
+        <textarea
+          #resText
+          rows="1"
+          [(ngModel)]="value"
+          cols="30"
+          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+          inputId="res-text"
+          pInputTextarea
+        ></textarea>
+        <!-- [autoResize]="true" -->
+      </div>
+    </div>
+    <div class="field flex justify-content-center">
+      <button
+        (click)="gentext(srcText, resLength, resText)"
+        class="btn btn-primary mr-3"
+      >
+        Tạo chuỗi
+      </button>
+      <button (click)="copyText(resText)" class="btn btn-primary">
+        Copy chuỗi
+      </button>
+    </div>
+  </div>
+</div>
