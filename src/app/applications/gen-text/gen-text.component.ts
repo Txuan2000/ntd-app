@@ -1,30 +1,34 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, ElementRef, viewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-gen-text',
   standalone: true,
-  imports: [FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './gen-text.component.html',
   styleUrl: './gen-text.component.scss'
 })
 export class GenTextComponent {
   title: string = 'common.title.generateString';
+  showSuccess: boolean = false;
   value: any;
-  constructor(
-    // protected common: CommonService
-  ) { }
+  result = viewChild<ElementRef<HTMLTextAreaElement>>('resText')
 
-  ngOnInit(): void {
-    // this.title = this.common.trans('common.title.generateString');    
-  }
   /**
    * Copy giá trị của 1 ô nhập liệu vào clipboard
    * @param inputElement element được copy giá trị
    */
   copyText(inputElement: any): void {
-    // this.common.messageRes('common.message.success');
+    const resultRef = this.result();
+    if (!resultRef?.nativeElement?.value?.length) {
+      return
+    }
     navigator.clipboard.writeText(inputElement.value);
+    this.showSuccess = true;
+    setTimeout(() => {
+      this.showSuccess = false;
+    }, 3000);
   }
   /**
    * thực hiện sinh chuỗi

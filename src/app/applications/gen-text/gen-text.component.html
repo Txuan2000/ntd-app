@@ -1,59 +1,66 @@
-<div class="card">
-  <!-- <h1 class="text-center">{{ title | translate }}</h1> -->
-  <div class="col-12">
-    <div class="field grid">
-      <label class="col-12 md:col-2" for="gen-text">Nhập ký tự</label>
-      <div class="col-12 md:col-10">
-        <input
-          #srcText
-          pInputText
-          type="text"
-          id="gen-text"
-          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-          value="a"
-        />
-      </div>
-    </div>
-    <div class="field grid">
-      <label class="col-12 md:col-2" for="count-text">Nhập số lượng</label>
-      <div class="col-12 md:col-10">
-        <input
-          #resLength
-          pInputText
-          type="number"
-          id="gen-text"
-          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-          value="0"
-          min="0"
-        />
-      </div>
-    </div>
-    <!-- <p-divider></p-divider> -->
-    <div class="field grid">
-      <label class="col-12 md:col-2" for="res-text">Kết quả</label>
-      <div class="col-12 md:col-10">
-        <textarea
-          #resText
-          rows="1"
-          [(ngModel)]="value"
-          cols="30"
-          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-          inputId="res-text"
-          pInputTextarea
-        ></textarea>
-        <!-- [autoResize]="true" -->
-      </div>
-    </div>
-    <div class="field flex justify-content-center">
-      <button
-        (click)="gentext(srcText, resLength, resText)"
-        class="btn btn-primary mr-3"
-      >
-        Tạo chuỗi
-      </button>
-      <button (click)="copyText(resText)" class="btn btn-primary">
-        Copy chuỗi
-      </button>
-    </div>
+<div *ngIf="showSuccess" class="text-center bg-green-400 mb-4">
+  Copy thành cồng
+</div>
+<div class="max-w-md mx-auto">
+  <div class="relative z-0 w-full mb-5 group">
+    <input
+      #srcText
+      name="floating_email"
+      id="floating_email"
+      class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+      placeholder=" "
+      required
+    />
+    <label
+      for="floating_email"
+      class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+      >Ký tự</label
+    >
+  </div>
+  <div class="relative z-0 w-full mb-5 group">
+    <input
+      #resLength
+      type="number"
+      name="floating_password"
+      id="floating_password"
+      class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+      placeholder=" "
+      required
+    />
+    <label
+      for="floating_password"
+      class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+      >Độ dài</label
+    >
+  </div>
+  <div class="relative z-0 w-full mb-5 group">
+    <textarea
+      #resText
+      readonly
+      id="res-text"
+      rows="4"
+      [(ngModel)]="value"
+      cols="30"
+      class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+    ></textarea>
+    <label
+      for="floating_repeat_password"
+      class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-7 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+      >Kết quả</label
+    >
+  </div>
+  <div class="form-footer flex gap-2 justify-center">
+    <button
+      (click)="gentext(srcText, resLength, resText)"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    >
+      Tạo chuỗi
+    </button>
+    <button
+      (click)="copyText(resText)"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    >
+      Copy chuỗi
+    </button>
   </div>
 </div>
