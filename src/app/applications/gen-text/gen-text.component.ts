@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, viewChild } from '@angular/core';
+import { AfterContentInit, Component, computed, ElementRef, viewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -9,13 +9,13 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './gen-text.component.html',
   styleUrl: './gen-text.component.scss'
 })
-export class GenTextComponent {
+export class GenTextComponent implements AfterContentInit {
   title: string = 'common.title.generateString';
   showSuccess: boolean = false;
   value: any;
-  result = viewChild<ElementRef<HTMLTextAreaElement>>('srcText')
-  source = viewChild<ElementRef<HTMLTextAreaElement>>('resText')
-  len = viewChild<ElementRef<HTMLTextAreaElement>>('resLength')
+  result = viewChild<ElementRef<HTMLTextAreaElement>>('resText')
+  source = viewChild<ElementRef<HTMLInputElement>>('srcText')
+  len = viewChild<ElementRef<HTMLInputElement>>('resLength')
 
   /**
    * Copy giá trị của 1 ô nhập liệu vào clipboard
@@ -32,6 +32,9 @@ export class GenTextComponent {
       this.showSuccess = false;
     }, 3000);
   }
+  ngAfterContentInit(): void {
+
+  }
   /**
    * thực hiện sinh chuỗi
    * @param source element nguồn
@@ -39,24 +42,25 @@ export class GenTextComponent {
    * @param res element kết quả
    */
   gentext(): void {
-    const source = this.source()?.nativeElement?.value;
-    const times = this.len()?.nativeElement?.value;
     const res = this.result()?.nativeElement;
-    if (!source || !times || !res) {
+    const src = this.source()?.nativeElement?.value ?? '';
+    const len = +(this.len()?.nativeElement?.value ?? 0);
+
+    if (!src || !len || !res) {
       return;
     }
-    let temp_text = '';
-    let temp_times = Math.floor(+times / source.toString().length);
 
+    let temp_text = '';
+    let temp_times = Math.floor(len / src?.length);
     let temp_times2 = temp_times;
     while (temp_times) {
-      temp_text = temp_text.concat(source);
+      temp_text = temp_text.concat(src);
       --temp_times;
     }
-    let newTextLength = temp_times2 * source.length;
+    let newTextLength = temp_times2 * src?.length;
 
-    if (newTextLength < +times) {
-      temp_text = temp_text.concat(source.substring(0, +times - newTextLength));
+    if (newTextLength < len) {
+      temp_text = temp_text.concat(src?.substring(0, len - newTextLength));
     }
     res.value = temp_text;
     res.focus();
