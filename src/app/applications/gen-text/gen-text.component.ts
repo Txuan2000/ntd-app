@@ -13,7 +13,9 @@ export class GenTextComponent {
   title: string = 'common.title.generateString';
   showSuccess: boolean = false;
   value: any;
-  result = viewChild<ElementRef<HTMLTextAreaElement>>('resText')
+  result = viewChild<ElementRef<HTMLTextAreaElement>>('srcText')
+  source = viewChild<ElementRef<HTMLTextAreaElement>>('resText')
+  len = viewChild<ElementRef<HTMLTextAreaElement>>('resLength')
 
   /**
    * Copy giá trị của 1 ô nhập liệu vào clipboard
@@ -36,19 +38,25 @@ export class GenTextComponent {
    * @param times element chứa số ký tự
    * @param res element kết quả
    */
-  gentext(source: any, times: any, res: any): void {
+  gentext(): void {
+    const source = this.source()?.nativeElement?.value;
+    const times = this.len()?.nativeElement?.value;
+    const res = this.result()?.nativeElement;
+    if (!source || !times || !res) {
+      return;
+    }
     let temp_text = '';
-    let temp_times = Math.floor(times.value / source.value.toString().length);
+    let temp_times = Math.floor(+times / source.toString().length);
 
     let temp_times2 = temp_times;
     while (temp_times) {
-      temp_text = temp_text.concat(source.value);
+      temp_text = temp_text.concat(source);
       --temp_times;
     }
-    let newTextLength = temp_times2 * source.value.length;
+    let newTextLength = temp_times2 * source.length;
 
-    if (newTextLength < times.value) {
-      temp_text = temp_text.concat(source.value.substring(0, times.value - newTextLength));
+    if (newTextLength < +times) {
+      temp_text = temp_text.concat(source.substring(0, +times - newTextLength));
     }
     res.value = temp_text;
     res.focus();
