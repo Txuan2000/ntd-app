@@ -46,4 +46,11 @@ export class CommonService {
     //   life: 3000
     // });
   }
+  encode(value: any, scret: string = 'helloDungeon2k'): string {
+    return btoa(`${scret}${encodeURIComponent(value)}`);
+  }
+  decode(value: any, scret: string = 'helloDungeon2k'): string {
+    const encodedValue = value.replace(`${scret}`, '');
+    return decodeURIComponent(atob(encodedValue));
+  }
 }
