@@ -2,5 +2,10 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
 
+import jspreadsheet from 'jspreadsheet';
+import parser from '@jspreadsheet/parser';
+jspreadsheet.setLicense('NTc3ODg5YjdiYzg0YmY2ZWUxODMzMTQ5Nzg4NjM1MGM3YjEyMGM4MmJkODBiNDM2Nzc3Mjg0YWY4NmIxMjc2MTBhMzA0NDRhNDYxNTlhZDEyNmYyMmM5NmUyYmY5ZGEwMjI5YjI2MDVkYjk2Y2M4MWRmMGUxMmUzYzcwMDkzMjMsZXlKamJHbGxiblJKWkNJNkltWm1ZMlpsTXpVeFlqQm1aR0ZqTldRNFpqaGtNakEwTURRMk5UWTBaREV3TnpCaVlqZ3dZVE1pTENKdVlXMWxJam9pWkhWdVoyVnZiakpySWl3aVpHRjBaU0k2TVRjeU5qUTBNVEl3TUN3aVpHOXRZV2x1SWpwYkluZGxZaUlzSW14dlkyRnNhRzl6ZENKZExDSndiR0Z1SWpvek1Td2ljMk52Y0dVaU9sc2lkamNpTENKMk9DSXNJblk1SWl3aWRqRXdJaXdpZGpFeElpd2labTl5YlhWc1lTSXNJbVp2Y20xeklpd2ljbVZ1WkdWeUlpd2ljR0Z5YzJWeUlpd2lhVzF3YjNKMFpYSWlMQ0p6WldGeVkyZ2lMQ0pqYjIxdFpXNTBjeUlzSW5aaGJHbGtZWFJwYjI1eklpd2lZMmhoY25Seklpd2ljSEpwYm5RaUxDSmlZWElpTENKemFHVmxkSE1pTENKemFHRndaWE1pTENKelpYSjJaWElpWFgwPQ==');
+jspreadsheet.setExtensions({ parser })
+
 bootstrapApplication(AppComponent, appConfig)
   .catch((err) => console.error(err));

@@ -33,7 +33,9 @@
               "src/styles.scss",
               "node_modules/tailwindcss/base.css",
               "node_modules/tailwindcss/components.css",
-              "node_modules/tailwindcss/utilities.css"
+              "node_modules/tailwindcss/utilities.css",
+              "node_modules/jspreadsheet/dist/jspreadsheet.css",
+              "node_modules/jsuites/dist/jsuites.css"
             ],
             "scripts": []
           },
@@ -63,6 +65,9 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "port": 4100
+          },
           "configurations": {
             "production": {
               "buildTarget": "ntd-app:build:production"
