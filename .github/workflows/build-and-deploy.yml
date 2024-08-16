@@ -23,6 +23,9 @@ jobs:
 
       - name: Setup Bunjs
         uses: oven-sh/setup-bun@v2
+        run: bun server.js
+        env:
+          JEXCEL_LICENSE: ${{ secrets.JEXCEL_LICENSE }}
 
       - name: Install Dependencies
         run: bun install
