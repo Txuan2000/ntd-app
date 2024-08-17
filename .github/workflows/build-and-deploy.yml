@@ -23,6 +23,8 @@ jobs:
 
       - name: Setup Bunjs
         uses: oven-sh/setup-bun@v2
+        
+      - name: Generate envỉonment file
         run: bun server.js
         env:
           JEXCEL_LICENSE: ${{ secrets.JEXCEL_LICENSE }}
