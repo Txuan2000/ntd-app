@@ -1,5 +1,4 @@
 import {
-  AfterContentInit,
   Component,
   computed,
   effect,
@@ -17,7 +16,7 @@ import { DistanceMapService } from './distance-map.service';
   templateUrl: './distance-map.component.html',
   styleUrl: './distance-map.component.scss',
 })
-export class DistanceMapComponent implements AfterContentInit {
+export class DistanceMapComponent {
   mapEl = viewChild<ElementRef<HTMLDivElement>>('mapEl');
   map = computed(() => {
     const mapEl = this.mapEl();
@@ -58,7 +57,5 @@ export class DistanceMapComponent implements AfterContentInit {
         L.control.layers()
       })
     })
-  }
-  ngAfterContentInit(): void {
   }
 }
