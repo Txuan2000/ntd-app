@@ -24,10 +24,10 @@ jobs:
         uses: oven-sh/setup-bun@v2
         
       - name: Generate envỉonment file
-        run: echo "$JEXCEL_LICENSE" && bun server.js
         shell: bash
-        env:
-          JEXCEL_LICENSE: ${{ secrets.JEXCEL_LICENSE }}
+        run: JEXCEL_LICENSE=${{ secrets.JEXCEL_LICENSE }} bun server.js
+        # env:
+        #   JEXCEL_LICENSE: ${{ secrets.JEXCEL_LICENSE }}
 
       - name: Install Dependencies
         run: bun install
