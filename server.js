@@ -23,7 +23,7 @@ fs.access(dir, fs.constants.F_OK, async (err) => {
   }
   // Now write to file
   try {
-    console.log(process.env);
+    console.log(process.env.JEXCEL_LICENSE);
 
     const fileContent = fs.readFileSync(dir + '/' + file, { encoding: 'utf8' });
     const value = fileContent.replace(/#JEXCEL_LICENSE/i, content);
