@@ -23,18 +23,20 @@ fs.access(dir, fs.constants.F_OK, async (err) => {
   }
   // Now write to file
   try {
+    console.log(process.env);
+
     const fileContent = fs.readFileSync(dir + '/' + file, { encoding: 'utf8' });
     const value = fileContent.replace(/#JEXCEL_LICENSE/i, content);
     console.log(value);
 
     // fs.writeFileSync(dir + "/" + file, content);
     fs.writeFileSync(dir + "/" + prodFile, value);
-    console.log("Created successfully in", process.cwd());
-    if (fs.existsSync(dir + "/" + file)) {
-      console.log("File is created", path.resolve(dir + "/" + file));
-      const str = fs.readFileSync(dir + "/" + file).toString();
-      console.log(str);
-    }
+    // console.log("Created successfully in", process.cwd());
+    // if (fs.existsSync(dir + "/" + file)) {
+    //   console.log("File is created", path.resolve(dir + "/" + file));
+    //   const str = fs.readFileSync(dir + "/" + file).toString();
+    //   console.log(str);
+    // }
   } catch (error) {
     console.error(error);
     process.exit(1);
