@@ -8,9 +8,8 @@ describe('DexcelComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DexcelComponent]
-    })
-    .compileComponents();
+      imports: [DexcelComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(DexcelComponent);
     component = fixture.componentInstance;

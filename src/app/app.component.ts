@@ -8,7 +8,7 @@ import { initFlowbite } from 'flowbite';
   standalone: true,
   imports: [RouterOutlet, CommonModule, RouterModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
   title = 'ntd-app';

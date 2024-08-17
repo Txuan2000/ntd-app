@@ -23,7 +23,7 @@ jobs:
 
       - name: Setup Bunjs
         uses: oven-sh/setup-bun@v2
-        
+
       - name: Generate envỉonment file
         shell: bash
         run: bun server.js

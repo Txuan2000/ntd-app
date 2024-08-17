@@ -3,14 +3,13 @@ import { Injectable } from '@angular/core';
 import { MessageService } from 'primeng/api';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CommonService {
-
   constructor(
     // private translate: TranslateService,
     private messageService: MessageService,
-  ) { }
+  ) {}
   // trans(data: any, params: any = null) {
   //   let result: string = '';
   //   try {
@@ -46,10 +45,10 @@ export class CommonService {
     //   life: 3000
     // });
   }
-  encode(value: any, scret: string = 'helloDungeon2k'): string {
+  encode(value: any, scret = 'helloDungeon2k'): string {
     return btoa(`${scret}${encodeURIComponent(value)}`);
   }
-  decode(value: any, scret: string = 'helloDungeon2k'): string {
+  decode(value: any, scret = 'helloDungeon2k'): string {
     const encodedValue = value.replace(`${scret}`, '');
     return decodeURIComponent(atob(encodedValue));
   }

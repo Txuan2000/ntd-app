@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { AfterContentInit, Component, computed, ElementRef, viewChild } from '@angular/core';
+import {
+  AfterContentInit,
+  Component,
+  computed,
+  ElementRef,
+  viewChild,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -7,15 +13,15 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './gen-text.component.html',
-  styleUrl: './gen-text.component.scss'
+  styleUrl: './gen-text.component.scss',
 })
 export class GenTextComponent implements AfterContentInit {
-  title: string = 'common.title.generateString';
-  showSuccess: boolean = false;
+  title = 'common.title.generateString';
+  showSuccess = false;
   value: any;
-  result = viewChild<ElementRef<HTMLTextAreaElement>>('resText')
-  source = viewChild<ElementRef<HTMLInputElement>>('srcText')
-  len = viewChild<ElementRef<HTMLInputElement>>('resLength')
+  result = viewChild<ElementRef<HTMLTextAreaElement>>('resText');
+  source = viewChild<ElementRef<HTMLInputElement>>('srcText');
+  len = viewChild<ElementRef<HTMLInputElement>>('resLength');
 
   /**
    * Copy giá trị của 1 ô nhập liệu vào clipboard
@@ -24,7 +30,7 @@ export class GenTextComponent implements AfterContentInit {
   copyText(inputElement: any): void {
     const resultRef = this.result();
     if (!resultRef?.nativeElement?.value?.length) {
-      return
+      return;
     }
     navigator.clipboard.writeText(inputElement.value);
     this.showSuccess = true;
@@ -32,9 +38,7 @@ export class GenTextComponent implements AfterContentInit {
       this.showSuccess = false;
     }, 3000);
   }
-  ngAfterContentInit(): void {
-
-  }
+  ngAfterContentInit(): void {}
   /**
    * thực hiện sinh chuỗi
    * @param source element nguồn
@@ -52,12 +56,12 @@ export class GenTextComponent implements AfterContentInit {
 
     let temp_text = '';
     let temp_times = Math.floor(len / src?.length);
-    let temp_times2 = temp_times;
+    const temp_times2 = temp_times;
     while (temp_times) {
       temp_text = temp_text.concat(src);
       --temp_times;
     }
-    let newTextLength = temp_times2 * src?.length;
+    const newTextLength = temp_times2 * src?.length;
 
     if (newTextLength < len) {
       temp_text = temp_text.concat(src?.substring(0, len - newTextLength));

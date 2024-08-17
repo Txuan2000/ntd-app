@@ -8,9 +8,8 @@ describe('GenTextComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [GenTextComponent]
-    })
-    .compileComponents();
+      imports: [GenTextComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(GenTextComponent);
     component = fixture.componentInstance;

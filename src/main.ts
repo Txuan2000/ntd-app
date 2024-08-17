@@ -6,7 +6,8 @@ import jspreadsheet from 'jspreadsheet';
 import parser from '@jspreadsheet/parser';
 import { environment } from './environments/environment';
 jspreadsheet.setLicense(environment.jexcelLicense);
-jspreadsheet.setExtensions({ parser })
+jspreadsheet.setExtensions({ parser });
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+bootstrapApplication(AppComponent, appConfig).catch((err) =>
+  console.error(err),
+);

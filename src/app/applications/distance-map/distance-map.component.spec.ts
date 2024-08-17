@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NoterComponent } from './noter.component';
+import { DistanceMapComponent } from './distance-map.component';
 
-describe('NoterComponent', () => {
-  let component: NoterComponent;
-  let fixture: ComponentFixture<NoterComponent>;
+describe('DistanceMapComponent', () => {
+  let component: DistanceMapComponent;
+  let fixture: ComponentFixture<DistanceMapComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NoterComponent],
+      imports: [DistanceMapComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(NoterComponent);
+    fixture = TestBed.createComponent(DistanceMapComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

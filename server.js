@@ -1,6 +1,6 @@
 /* server.js in root directory */
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
 const dir = "src/environments";
 const file = "environment.ts";
@@ -15,8 +15,7 @@ fs.access(dir, fs.constants.F_OK, async (err) => {
     // Create /src
     try {
       fs.mkdirSync(dir, { recursive: true });
-    }
-    catch (error) {
+    } catch (error) {
       console.log(`Error while creating ${dir}. Error is ${error}`);
       process.exit(1);
     }
@@ -25,7 +24,7 @@ fs.access(dir, fs.constants.F_OK, async (err) => {
   try {
     console.log(process.env.JEXCEL_LICENSE);
 
-    const fileContent = fs.readFileSync(dir + '/' + file, { encoding: 'utf8' });
+    const fileContent = fs.readFileSync(dir + "/" + file, { encoding: "utf8" });
     const value = fileContent.replace(/#JEXCEL_LICENSE/i, content);
     console.log(value);
 
