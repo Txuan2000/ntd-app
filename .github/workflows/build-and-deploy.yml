@@ -1,5 +1,4 @@
 name: Build and Deploy Angular to GitHub Pages
-
 on:
   push:
     branches: ["main"]
@@ -25,9 +24,9 @@ jobs:
         uses: oven-sh/setup-bun@v2
         
       - name: Generate envỉonment file
-        run: bun server.js
         env:
           JEXCEL_LICENSE: ${{ secrets.JEXCEL_LICENSE }}
+        run: bun server.js
 
       - name: Install Dependencies
         run: bun install
