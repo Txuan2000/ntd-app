@@ -25,9 +25,9 @@ jobs:
         
       - name: Generate envỉonment file
         shell: bash
-        run: JEXCEL_LICENSE=${{ secrets.JEXCEL_LICENSE }} bun server.js
-        # env:
-        #   JEXCEL_LICENSE: ${{ secrets.JEXCEL_LICENSE }}
+        run: bun server.js
+        env:
+          JEXCEL_LICENSE: ${{ secrets.JEXCEL_LICENSE }}
 
       - name: Install Dependencies
         run: bun install
